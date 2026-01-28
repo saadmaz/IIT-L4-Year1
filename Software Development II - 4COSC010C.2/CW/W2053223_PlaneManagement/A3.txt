@@ -1,0 +1,8 @@
+Ticket information :
+Row letter: A
+Seat number: 3
+Price: 200
+Person Information: 
+Name is : saad
+Surname is : mazhar
+Email is : saadmazaa@gmail.com

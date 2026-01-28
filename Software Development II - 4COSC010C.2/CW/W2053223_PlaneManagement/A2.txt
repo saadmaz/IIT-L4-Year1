@@ -1,0 +1,8 @@
+Ticket information :
+Row letter: A
+Seat number: 2
+Price: 200
+Person Information: 
+Name is : saad
+Surname is : mazhar
+Email is : saad.20221804@iit.ac.lk
