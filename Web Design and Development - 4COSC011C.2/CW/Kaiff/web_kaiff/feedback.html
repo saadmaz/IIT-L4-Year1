@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
+
+        heder {
+            padding: 0 0.625rem;
+            margin-bottom: 1.875rem;
+        }
+
+        .feedback-main {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.4;
+            color: black;
+            margin: 0;
+            margin: 3.125rem auto 0 auto;
+        }
+
+        .feedback-main::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            background: #1b1b32;
+            background-image: linear-gradient(115deg, rgba(16, 196, 211, 0.8), rgba(79, 230, 175, 0.7)), url(#);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        @media (min-width: 576px) {
+            .feedback-section {
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .feedback-section {
+                max-width: 720px;
+            }
+        }
+
+        #title {
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .pform {
+            font-size: 1.125rem;
+        }
+
+        #title,
+        .pform {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .feedback-label,
+        .pform {
+            display: flex;
+            align-items: center;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input,
+        button,
+        select,
+        textarea {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        #survey-form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2.5rem 0.625rem;
+            border-radius: 0.25rem;
+        }
+
+        @media (min-width: 480px) {
+            #survey-form {
+                padding: 2.5rem;
+            }
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .description {
+            font-style: italic;
+            font-weight: 200;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+        }
+
+        .feedback-fieldset {
+            margin: 0 auto 1.25rem auto;
+            padding: 0.25rem;
+            border: none;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 2.375rem;
+            padding: 0.375rem 0.75rem;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .input-radio,
+        .input-checkbox {
+            display: inline-box;
+            margin-right: 0.625rem;
+            min-height: 1.25rem;
+            min-width: 1.25rem;
+        }
+
+        .input-textarea {
+            min-height: 120px;
+            width: 100%;
+            width: 100%;
+            padding: 0.625rem;
+            resize: vertical;
+        }
+
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background: #37af65;
+            color: inherit;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+
+        .card-input .error,
+        .error-2 {
+            color: #ff3860;
+            font-size: 9px;
+            height: 13px;
+        }
+
+        .card-input input:focus {
+            outline: 0;
+        }
+
+        .card-input.success input {
+            border-color: #09c372;
+        }
+
+        .error input {
+            border-color: #ff3860;
+        }
+
+        .error select {
+            border-color: #ff3860;
+        }
+
+        .non-flex select {
+            font-size: 15px !important;
+        }
+
+        .final {
+            a {
+                color: #0a66c8ce;
+                text-decoration: none;
+                background-color: #fcfcfc; 
+                width: 750px;
+                padding: 5px 10px ; 
+                border-radius: 5px; 
+                transition: background-color 0.3s ease;
+
+            }
+
+            a:hover {
+                color: #020b4ece;
+                text-decoration: hsla(0, 0%, 100%, 0.808);
+            }
+
+        }
+           
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="nav dark-nav">
+            <div class="container-header">
+                <div class="nav-heading">
+                    <button class="toggle-nav" data-toggle="open-navbar1"><i class="fa fa-align-right"></i></button>
+                    <a class="brand" href="#">
+                        <img src="Images/hunger-logo.png" width="30%" alt="The Hunger Gap" srcset="">
+                    </a>
+                   
+                </div>
+                <div class="menu" id="open-navbar1">
+                    <ul class="list">
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#">User Profile</a></li>
+                        <li class="nav-active"><a href="#">Feedback</a></li>
+                        <li><a href="#">Team</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <center>
+        <section class="feedback-main">
+            <div class="feedback-section">
+                <header>
+                    <h1 id="title" class="text-center">Feedback Form</h1>
+                    <p id="decription" class="text-center decription">Required Fields *</p>
+                </header>
+                <form id="survey-form">
+                    <div class="feedback-fieldset card-input">
+                        <label class="feedback-label" id="name-label">* Enter Your Name</label>
+                        <input id="feedback-name" type="text" placeholder="Enter name here" class="form-control" required/>
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="feedback-fieldset card-input">
+                        <label class="feedback-label" id="email">* Enter Your Email</label>
+                        <input id="email-input" type="email" placeholder="Enter name here" class="form-control" required />
+                        <span class="error"></span>
+                    </div>
+                    
+                    <div class="feedback-fieldset">
+                        <p class="pform">Was this your first time visiting?</p>
+                        <div style="display: flex; justify-content: space-between; width: 25%;">
+                            <label class="feedback-label"><input type="radio" name="agree" id="radio-1" value="yes"
+                                    class="input-radio" />Yes</label>
+                            <label class="feedback-label"><input type="radio" name="agree" id="radio-1" value="no"
+                                    class="input-radio" />No</label>
+                            <span class="error"></span>
+                        </div>
+                    </div>
+
+                    <div class="feedback-fieldset">
+                        <p class="pform">Was this website informative and easy to navigate through?</p>
+                        <div style="display: flex; justify-content: space-between; width: 25%;">
+                            <label class="feedback-label"><input type="radio" name="allow" id="radio-2" value="yes"
+                                    class="input-radio" />Yes</label>
+                            <label class="feedback-label"><input type="radio" name="allow" id="radio-2" value="no"
+                                    class="input-radio" />No</label>
+                            <span class="error"></span>
+                        </div>
+                    </div>
+                    <div class="feedback-fieldset card-input">
+                        <p class="pform">*If "No", suggest any improvements for the future :</p><span class="error"></span>
+                        <textarea id="feedback-comments" name="comments" placeholder="Add your message here"
+                            class="input-textarea"></textarea>
+                    </div>
+                    <div class="feedback-fieldset">
+                        <p class="pform">How satisfied are you with our services? Choose from 0 to 10, with 1 being "Not
+                            satisfied
+                            at all" and 10 being "Extremely satisfied!"
+                        </p>
+                        <div style="display: flex; justify-content: space-between;">
+                            <label class="feedback-label">
+                                <input type="radio" name="rating" id="feedback-rating" value="one" class="input-radio" />1
+                            </label>
+
+                            <label class="feedback-label">
+                                <input type="radio" name="rating" id="feedback-rating" value="two" class="input-radio" />2
+                            </label>
+
+                            <label class="feedback-label">
+                                <input type="radio" name="rating" id="feedback-rating" value="three" class="input-radio" />3
+                            </label>
+
+                            <label class="feedback-label">
+                                <input type="radio" name="rating" id="feedback-rating" value="four" class="input-radio" />4
+                            </label>
+
+                            <label class="feedback-label">
+                                <input type="radio" name="rating" id="feedback-rating" value="five" class="input-radio" />5
+                            </label>
+
+                            <label class="feedback-label">
+                                <input type="radio" name="rating" id="feedback-rating" value="six" class="input-radio" />6
+                            </label>
+
+                            <label class="feedback-label">
+                                <input type="radio" name="rating" id="feedback-rating" value="seven" class="input-radio" />7
+                            </label>
+
+                            <label class="feedback-label">
+                                <input type="radio" name="rating" id="feedback-rating" value="eight" class="input-radio" />8
+                            </label>
+
+                            <label class="feedback-label">
+                                <input type="radio" name="rating" id="feedback-rating" value="nine" class="input-radio" />9
+                            </label>
+
+                            <label class="feedback-label">
+                                <input type="radio" name="rating" id="feedback-rating" value="ten" class="input-radio" />10
+                            </label>
+                            <span class="error"></span>
+                        </div>
+                    </div>
+                    <div class="feedback-fieldset">
+                        <p class="pform">Would you recommend our services?</p>
+                        <div style="display: flex; justify-content: space-between; width: 25%;">
+                            <label class="feedback-label"><input type="radio" name="accept" id="radio-3" value="yes"
+                                    class="input-radio" />Yes</label>
+                            <label class="feedback-label"><input type="radio" name="accept" id="radio-3" value="no"
+                                    class="input-radio" />No</label>
+                        </div>
+                    </div>
+                    <div class="feedback-fieldset">
+                        <p class="pform">Would you like to receive updates about the website and any offers?</p> <span
+                            class="error"></span>
+                        <select name="receive-updates" id="feedback-receive-updates" class="input-field receive-updates">
+                            <option value="" disabled selected>Select Option</option>
+                            <option value="yes-email">Yes - Via Email</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="feedback-fieldset">
+                        <p class="pform">Do you have any additional questions or requests?</p> <span class="error"></span>
+                        <textarea id="feedback-additional-comments" name="comments" placeholder="Add your message here"
+                            class="input-textarea"></textarea>
+                    </div>
+    
+                    <!-- <div class="feedback-fieldset"> -->
+                    <button type="submit" id="submit" class="submit-button">Submit</button>
+                    <!-- </div> -->
+                </form>
+            </div>
+        </section>
+    </center>
+    <script>
+        const surveyForm = document.getElementById('survey-form');
+        const feedbackName = document.getElementById('feedback-name');
+        const feedbackEmail = document.getElementById('email-input');
+        const feedbackRadioOne = document.getElementById('radio-1');
+        const feedbackRadioTwo = document.getElementById('radio-2');
+
+        surveyForm.addEventListener('submit', e => {
+            e.preventDefault();
+
+            validateInputsFormFeedback();
+        });
+
+        const setError = (element, message) => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+            errorDisplay.innerText = message;
+            inputControl.classList.add('error');
+            inputControl.classList.remove('success')
+        }
+
+        const setSuccess = element => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+
+            errorDisplay.innerText = '';
+            inputControl.classList.add('success');
+            inputControl.classList.remove('error');
+        };
+        const validateInputsFormFeedback = () => {
+            const surveyFormValue = surveyForm.value.trim();
+            const feedbackNameValue = feedbackName.value.trim();
+            const feedbackEmailValue = feedbackEmail.value.trim();
+            const feedbackRadioTwoValue = feedbackRadioTwo.value.trim();
+            const feedbackCommentsValue = feedbackComments.value.trim();
+
+
+            if (feedbackNameValue === '') {
+                setError(feedbackName, 'Name is required');
+            } else {
+                setSuccess(feedbackName);
+            }
+        };
+    </script>
+</body>
+
+</html>
