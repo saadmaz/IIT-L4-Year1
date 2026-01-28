@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+    
+    
+
+body {
+    background-size: cover;
+	background-attachment:fixed;
+}
+
+#main-heading {
+
+    margin-top: 150px;
+    margin-left: 600px;
+    font-family: 'Poppins', sans-serif; 
+}
+
+#main-heading h1{
+    color: black;
+}
+
+#sitemap-svg line{
+    stroke-width: 2;
+    stroke: #161469;
+}
+
+#sitemap-svg rect{
+    fill: #000;
+    fill-opacity: 0.6;
+    stroke-width: 2;
+    stroke: #fff;
+    transition: fill 0.15s, stroke 0.15s;
+}
+
+#sitemap-svg text{
+    fill: #fff;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif; 
+    text-anchor: middle;
+    transition: font-size 0.15s;
+}
+
+#sitemap-svg g:hover rect {
+    fill: #0c4e8b;
+    fill-opacity: 1;
+	stroke: #310371;
+    cursor: pointer;
+}
+
+#sitemap-svg g:hover text {
+    font-size: 21px;
+    cursor: pointer;
+}
+
+#sitemap-svg g:active rect {
+    fill-opacity: 0.8;
+    stroke-opacity: 0.1;
+}
+
+#sitemap-svg g:active text {
+    fill: #0c4e8b;
+    fill-opacity: 0.6;
+}
+
+#group{
+    text-align: center;
+}
+
+
+
+header{
+    padding: 5px 5%;
+    align-items:center;
+    justify-content: flex-end;
+    background-color: black;
+    display: flex;
+}
+
+.centerNavBar{
+    list-style: none;
+    display:flex;
+    word-spacing: 30px;
+    text-align: center;
+    float:inline-start;
+
+ 
+ }
+ .centerNavBar a{
+    color:white;
+    font-weight: 600;
+    text-decoration: none;
+
+
+ }
+ .cta,
+ .overlay__content a{
+    font-family: "Poppins",sans-serif;
+    font-weight: 200;
+    color: rgb(19, 17, 17);
+    text-decoration: none;
+ }
+ 
+.centerNavBar li{
+padding: 20px 30px;
+}
+
+
+.centerNavBar li a {
+    transition: all 0.3s ease 0s;
+  
+
+}
+.centerNavBar li a:hover{
+    word-spacing: 30px;
+    font-size: larger;
+    color: #0c80e3;
+    font-weight: bolder;
+
+}
+nav i {
+    color:white;
+    }
+
+hr{
+    border: outset;
+    height: 4px;
+    color:rgb(40,78,109);
+}
+.cta{
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: #0c4e8b;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.cta:hover{
+    background-color: #0c4e8b;
+    word-spacing: 30px;
+    font-size: larger;
+    font-weight: bolder;
+}
+.withoutLat{
+    text-decoration: none;
+    color: #ffff;
+    padding-right: 20px;
+    border-right: 2px;
+}
+/*Logo*/
+.logo{
+    margin-right: 20px;
+    
+}
+.logo img{
+    border-radius: 50%;
+    
+}
+
+.resize-img{
+    width: 250px;
+    height: auto;
+}
+/*Logo Heading*/
+.logoheading{
+    color:rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 520px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+}

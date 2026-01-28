@@ -1,0 +1,113 @@
+/* CSS code for the Navigation bar of The Hunger Gap */
+.nav {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ececec;
+    min-height: 50px;
+    height: auto;
+}
+
+.nav .nav-heading {
+    float: left;
+    padding-left: 40px;
+    padding-top: 10px;
+    width: 40%;
+    height: 60px;
+}
+
+.nav .nav-heading .toggle-nav {
+    padding: 2px 10px;
+    border-radius: 5px;
+    border: none;
+    display: none;
+    background-color: transparent;
+}
+
+.nav .nav-heading>a {
+    text-decoration: none;
+    color: #000000;
+    line-height: 60px;
+    font-weight: 400;
+    font-size: 19px;
+}
+
+/* Menu */
+list .nav .menu {
+    float: right;
+}
+
+.nav .menu:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.nav .list {
+    float: right;
+    margin: 0;
+    padding-right: 40px;
+    /* ppadding-top: 20px; */
+    /* heightt: 40pxx; */
+}
+
+.nav .list>li {
+    float: left;
+    list-style: none;
+}
+
+.nav .list>li>a {
+    color: #555;
+    text-decoration: none;
+    display: block;
+    line-height: 60px;
+    padding: 0 30px;
+}
+
+.nav .list>li>a:hover,
+.nav .list>li.active>a {
+    color: #333
+}
+
+.brand img{
+    padding-top: 8px;
+}
+/* Start drodpwn menu */
+.categories {
+    position: relative;
+}
+
+.show {
+    display: block
+}
+
+.menu .list li:active {
+    background-color: #0fc5d3;
+}
+
+/* Dark theme */
+.dark-nav {
+    background-color: #0f4d88;
+    border: none;
+}
+
+.dark-nav .list>li>a {
+    color: #fff;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.dark-nav .list>li>a:hover,
+.dark-nav .list>li.active>a {
+    color: #4fe6af
+}
+
+.dark-nav .nav-heading>a {
+    color: #EEE
+}
+
+.dark-nav .nav-heading .toggle-nav {
+    color: #fff0f0
+}
+
+.nav-active{
+    background-color: #0fc5d3;
+}

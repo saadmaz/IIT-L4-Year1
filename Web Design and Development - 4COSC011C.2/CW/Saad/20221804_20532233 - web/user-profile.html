@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="user-profile.css" />
+    <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="footer.css" />
+    
+    <script src="user-profile.js" defer> </script>
+    <title> User Profile </title>
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="nav dark-nav">
+          <div class="container-header">
+              <div class="nav-heading">
+                  <button class="toggle-nav" data-toggle="open-navbar1"><i class="fa fa-align-right"></i></button>
+                  <a class="brand" href="#">
+                      <img src="hunger-logo.png" width="30%" alt="The Hunger Gap" srcset="">
+                  </a>
+
+              </div>
+              <div class="menu" id="open-navbar1">
+                  <ul class="list">
+                      <li><a href="#"> Home </a></li>
+                      <li><a href="#"> Gallery </a></li>
+                      <li><a href="#">Shop</a></li>
+                      <li><a href="team.html"> Team </a></li> <!--Linked-->
+                      <li><a href="#"> Feedback </a></li>
+                      <li><a class="nav-active" href="user-profile.html"> User Profile </a></li> <!--Linked-->
+                  </ul>
+              </div>
+          </div>
+      </nav>
+  </header>
+
+    <section>
+      <div class="row">
+        <h1> USER PROFILE </h1>
+      </div>
+
+    <form action="#" class="form">
+      <h1 class="text-center"> Build your user profile! </h1>
+      
+      <!-- Progress bar -->
+      <div class="progressbar">
+        <div class="progress" id="progress"></div>
+        
+        <div
+          class="progress-step progress-step-active"
+          data-title="Personal Details"
+        ></div>
+        <div class="progress-step" data-title="Volunteering Task"></div>
+        <div class="progress-step" data-title="Qualifications"></div>
+        <div class="progress-step" data-title="Availability & Contact"></div>
+      </div>
+
+      <!-- Personal Details -->
+      <div class="form-step form-step-active">
+        <div class="input-group">
+          <label for="FirstName"> First Name </label>
+          <input type="text" name="FirstName" id="FirstName" required/>
+        </div>
+
+        <div class="input-group">
+          <label for="LastName"> Last Name </label>
+          <input type="text" name="LastName" id="LastName" required />
+        </div>
+
+        <div class="input-group">
+         <label for="Age"> Age </label>
+         <input type="number" name="Age" id="Age" required/>
+        </div>
+
+        <div class="input-group">
+           <label for="gender"> Gender </label>
+           <input type="text" name="gender" id="gender" />
+        </div>
+
+        <div class="input-group">
+            <label for="agree"> Agree with the Privacy terms </label>
+            <input type="radio" name="agree" id="agree" />
+         </div>
+
+        <div class="">
+          <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+        </div>
+      </div>
+
+      <!-- Volunteering Tasks -->
+      <div class="form-step">
+        <div class="input-group">
+          <label for="Rational">Rational</label>
+          <input type="text" name="Rational" id="Rational" />
+        </div>
+        <div class="input-group">
+          <label for="DoA">DoA</label>
+          <input type="text" name="DoA" id="DoA" />
+        </div>
+        <div class="input-group">
+            <label for="task">Task</label>
+            <input type="text" name="task" id="task" />
+        </div>
+        <div class="input-group">
+            <label for="place">Place</label>
+            <input type="text" name="place" id="place" />
+        </div>
+        <div class="input-group">
+            <label for="AssignmentType">Assignment Type</label>
+            <input type="text" name="AssignmentType" id="AssignmentType" />
+        </div>        
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+
+      <!-- Qualifications -->
+      <div class="form-step">
+        <div class="input-group">
+          <label for="AreaOfStudy">Area of Study</label>
+          <input type="text" name="AreaOfStudy" id="AreaOfStudy" />
+        </div>
+        <div class="input-group">
+          <label for="HighestDegree">Highest Degree</label>
+          <input type="text" name="HighestDegree" id="HighestDegree" />
+        </div>
+        <div class="input-group">
+            <label for="University">University or Institution</label>
+            <input type="text" name="University" id="University" />
+        </div>
+        <div class="input-group">
+            <label for="CompletionYear">Completion Year</label>
+            <input type="number" name="CompletionYear" id="CompletionYear" />
+        </div>
+        <div class="input-group">
+            <label for="Country">Country</label>
+            <input type="text" name="Country" id="Country" />
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+
+      <!-- Availability and contact -->
+      <div class="form-step">
+        <div class="input-group">
+          <label for="Availability">Availability of Volunteering</label>
+          <input type="range" name="Availability" id="Availability" />
+        </div>
+        <div class="input-group">
+          <label for="surname">Surname</label>
+          <input type="text" name="surname" id="surname" />
+        </div>
+        <div class="input-group">
+            <label for="number">Contact Number</label>
+            <input type="number" name="number" id="number" />
+        </div>
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" />
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <input type="submit" value="Submit" class="btn" />
+        </div>
+      </div>
+    </form>
+
+    <footer class="footer-distributed">
+      <div class="footer-center">
+          <p class="footer-links">
+              <a href="user-profile.html"> User Profile </a>
+              ||
+              <a href="team.html"> Team </a>
+              ||
+              <a href="content-saad.html"> Content Page </a>
+              ||
+              <a href="page-editor.html"> Page Editor </a>
+          </p>
+
+          <p class="footer-name">  This page was designed and developed by Saad Mazhar.</p>
+      </div>
+  </footer>
+
+  </body>
+</html>
