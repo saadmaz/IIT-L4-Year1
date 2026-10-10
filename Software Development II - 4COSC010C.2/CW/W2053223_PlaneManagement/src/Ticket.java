@@ -1,93 +1,84 @@
 import java.io.File;
-import java.util.InputMismatchException;
-import java.io.*;
-public class Ticket {
-    // Fields
-    private String row; // The row of the seat
-    private int seat; // The seat number
-    private int price; // The price of the ticket
-    private Person person; // Information about the ticket holder (a Person object)
+import java.io.FileWriter;
+import java.io.IOException;
 
-    // Constructor
-    public Ticket(String row, int seat, int price, Person person) {
+// A ticket for one seat, sold to one person
+public class Ticket {
+    private char row;       // row letter A-D
+    private int seat;       // seat number, starting at 1
+    private int price;      // price in £
+    private Person person;  // ticket holder
+
+    public Ticket(char row, int seat, int price, Person person) {
         this.row = row;
         this.seat = seat;
         this.price = price;
         this.person = person;
     }
 
-    // Getter for row
-    public String get_row() {
+    public char getRow() {
         return row;
     }
 
-    // Setter for row
-    public void set_row(String row) {
+    public void setRow(char row) {
         this.row = row;
     }
 
-    // Getter for price
-    public int get_price() {
-        return price;
-    }
-
-    // Setter for price
-    public void set_price(int price) {
-        this.price = price;
-    }
-
-    // Getter for seat
-    public int get_seat() {
+    public int getSeat() {
         return seat;
     }
 
-    // Setter for seat
-    public void set_seat(int seat) {
+    public void setSeat(int seat) {
         this.seat = seat;
     }
 
-    // Getter for person
-    public Person get_person() {
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public Person getPerson() {
         return person;
     }
 
-    // Setter for person
-    public void set_person(Person person) {
+    public void setPerson(Person person) {
         this.person = person;
     }
 
-    // Method to print ticket information
-    public void printTicketInfo() {
-        System.out.println("Your ticket information:");
-        System.out.println("Row: " + row);
-        System.out.println("Seat: " + seat);
+    // Prints the ticket and the ticket holder's details
+    public void printInfo() {
+        System.out.println("Seat: " + row + seat);
         System.out.println("Price: £" + price);
-        System.out.println("Person's information:");
-        person.printPersonInfo();
+        person.printInfo();
     }
 
-    // Method called save
+    // Saves the ticket to a text file named after the seat, e.g. "A2.txt"
     public void save() {
-        String file_name=row + seat + ".txt";
-        // print that details in text files
-        try {
-            //print ticket information
-            FileWriter writer = new FileWriter(file_name);
-            writer.write("Ticket information :\n");
-            writer.write("Row letter: " + row + "\n");
-            writer.write("Seat number: " + seat + "\n");
-            writer.write("Price: " + price + "\n");
-
-            //print person information
-            writer.write("Person Information: \n");
-            writer.write("Name is : " + person.getFirstName() + "\n");
-            writer.write("Surname is : " + person.getSName() + "\n");
-            writer.write("Email is : " + person.getEmail() + "\n");
-            writer.close();
-            System.out.println("Ticket information is in; " + file_name);
-        }catch(IOException e){
-            e.printStackTrace();
-
+        try (FileWriter writer = new FileWriter(getFileName())) {
+            writer.write("Ticket information\n");
+            writer.write("Seat: " + row + seat + "\n");
+            writer.write("Price: £" + price + "\n");
+            writer.write("Name: " + person.getName() + "\n");
+            writer.write("Surname: " + person.getSurname() + "\n");
+            writer.write("Email: " + person.getEmail() + "\n");
+            System.out.println("Ticket saved to " + getFileName());
+        } catch (IOException e) {
+            System.out.println("Could not save the ticket file: " + e.getMessage());
         }
+    }
+
+    // Deletes the ticket file when the seat is cancelled
+    public void deleteFile() {
+        File file = new File(getFileName());
+        if (file.exists() && !file.delete()) {
+            System.out.println("Could not delete " + getFileName());
+        }
+    }
+
+    private String getFileName() {
+        return "" + row + seat + ".txt";
     }
 }

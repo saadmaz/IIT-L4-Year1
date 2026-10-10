@@ -1,50 +1,43 @@
+// A passenger who owns a ticket
 public class Person {
-    // Fields
-    private String f_name; // first name
-    private String s_name; // surname
-    private String email; // Email address
+    private String name;    // first name
+    private String surname;
+    private String email;
 
-    // Constructor
-    public Person(String f_name, String s_name, String email) {
-        this.f_name = f_name;
-        this.s_name = s_name;
+    public Person(String name, String surname, String email) {
+        this.name = name;
+        this.surname = surname;
         this.email = email;
     }
 
-    // Getter for first name
-    public String getFirstName() {
-        return f_name;
+    public String getName() {
+        return name;
     }
 
-    // Setter for first name
-    public void setFirstName(String f_name) {
-        this.f_name = f_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    // Getter for surname
-    public String getSName() {
-        return s_name;
+    public String getSurname() {
+        return surname;
     }
 
-    // Setter for surname
-    public void setSName(String s_name) {
-        this.s_name = s_name;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    // Getter for email address
     public String getEmail() {
         return email;
     }
 
-    // Setter for email address
     public void setEmail(String email) {
         this.email = email;
     }
 
-    // Method to print user information
-    public void printPersonInfo() {
-        System.out.println("Name: " + f_name);
-        System.out.println("Surname: " + s_name);
+    // Prints the person's details
+    public void printInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Surname: " + surname);
         System.out.println("Email: " + email);
     }
 }

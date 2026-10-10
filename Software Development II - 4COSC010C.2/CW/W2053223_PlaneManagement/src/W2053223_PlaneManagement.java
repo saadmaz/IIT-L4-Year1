@@ -1,345 +1,222 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
-public class W2053223_PlaneManagement {
-    // Define arrays
-    static int[][] seats = new int[4][14];
 
+public class W2053223_PlaneManagement {
+    // Rows A and D have 14 seats, rows B and C have 12
+    static final char[] ROW_LETTERS = {'A', 'B', 'C', 'D'};
+
+    // seats[row][seat]: 0 = available, 1 = sold
+    static int[][] seats = {new int[14], new int[12], new int[12], new int[14]};
+
+    // tickets[row][seat]: the ticket sold for that seat, or null. Same shape as seats,
+    // so a seat's ticket is found directly instead of searching a list.
+    static Ticket[][] tickets = {new Ticket[14], new Ticket[12], new Ticket[12], new Ticket[14]};
 
     static Scanner user_input = new Scanner(System.in);
 
-    public static Ticket[] sold = new Ticket[100];
-    public static int sold_count = 0;
-
-    //main method
     public static void main(String[] args) {
-        System.out.println("Welcome to the Plane Management application"); //welcome message
-        Menu();
+        System.out.println("Welcome to the Plane Management application"); // welcome message
+
+        while (true) {
+            print_menu();
+            int option = read_int("Please select an option: ");
+            switch (option) {
+                case 1 -> buy_seat();
+                case 2 -> cancel_seat();
+                case 3 -> find_first_available();
+                case 4 -> show_seating_plan();
+                case 5 -> print_tickets_info();
+                case 6 -> search_ticket();
+                case 0 -> {
+                    System.out.println("Exiting the program. Goodbye!");
+                    return;
+                }
+                default -> System.out.println("Enter a number between 0 and 6.");
+            }
+        }
     }
-    //menu method
-    static void Menu() {
+
+    static void print_menu() {
+        System.out.println();
         System.out.println("************************************************");
-        System.out.println("*                 MENU OPTIONS                  *");
+        System.out.println("*                 MENU OPTIONS                 *");
         System.out.println("************************************************");
         System.out.println("     1) Buy a seat");
         System.out.println("     2) Cancel a seat");
         System.out.println("     3) Find first available seat");
         System.out.println("     4) Show seating plan");
-        System.out.println("     5) Print ticket information and total sales");
-        System.out.println("     6) Search tickets");
+        System.out.println("     5) Print tickets information and total sales");
+        System.out.println("     6) Search ticket");
         System.out.println("     0) Quit");
         System.out.println("************************************************");
-        System.out.println("Please select a option: ");
-        int option = user_input.nextInt();  //get input
-
-        if (option <= 6 && option >= 0) {   //checking if the user input is in the correct range
-            switch (option) {
-                case 0:
-                    System.out.println("exit your programme");
-                    System.exit(0);
-                case 1:
-                    buy_seat();  //if user input is 1
-                    skip();
-                    break;
-
-                case 2:
-                    cancel_seat();    //if user input is 2
-                    skip();
-                    break;
-
-                case 3:
-                    find_first_available();     //if user input is 3
-                    skip();
-                    break;
-
-                case 4:
-                    show_seating_plan();    //if user input is 4
-                    skip();
-                    break;
-
-                case 5:
-                    print_tickets_info();     //if user input is 5
-                    skip();
-                    break;
-
-                case 6:
-                    search_tickets();     //if user input is 6
-                    skip();
-                    break;
-
-            }
-        }else{
-            System.out.println("Enter a number between 0 and 6");
-            Menu();
-        }
     }
 
-
-    //call buy_seat
     static void buy_seat() {
-        while (true) {
-            System.out.println("Enter your preferred row (A, B, C, D)");   //ask user the preferred row
-            String row_letter = user_input.next().toUpperCase();    //uppercase
+        int row = read_row();
+        int seat = read_seat(row);
 
-            if (row_letter.matches("[ABCD]")) {    //check if input is within the range (A,B,C or D)
-                details_buy(row_letter);    //call the details_buy
-
-                break;
-
-            } else {
-                System.out.println("Invalid row letter. Please enter A, B, C, or D.");
-            }
+        if (seats[row][seat] == 1) {    // check the seat is not already sold
+            System.out.println("Seat " + seat_name(row, seat) + " is already sold.");
+            return;
         }
+
+        String name = read_text("Enter your first name: ");
+        String surname = read_text("Enter your surname: ");
+        String email = read_email();
+
+        Person person = new Person(name, surname, email);
+        Ticket ticket = new Ticket(ROW_LETTERS[row], seat + 1, get_price(seat), person);
+
+        seats[row][seat] = 1;
+        tickets[row][seat] = ticket;
+        System.out.println("Seat " + seat_name(row, seat) + " booked successfully.");
+        ticket.printInfo();
+        ticket.save();
     }
 
-
-    //calling details_buy method
-    static void details_buy(String row_letter) {
-        int column_number;  //initialize variables
-        int seatPrice;
-
-        if (row_letter.equalsIgnoreCase("A") || row_letter.equalsIgnoreCase("D")) {     //check if row letter is A or B
-            while (true) {
-                System.out.println("Enter your preferred column (1-14): ");     //input preferred column number
-                try{
-                    if (user_input.hasNextInt()) {
-                        column_number = user_input.nextInt();
-                        if (column_number >= 1 && column_number <= 14) {      // check the column number is in range (1 - 14)
-                            break;
-                        } else {
-                            System.out.println("Invalid column number. Please enter a number between 1 and 14.");
-                        }
-                    } else {
-                        System.out.println("Invalid input. Please enter a number.");
-                        user_input.next(); // Consume the invalid input
-                    }
-                }catch(Exception e){
-                    System.out.println("Error");
-                }
-            }
-        } else if (row_letter.equalsIgnoreCase("B") || row_letter.equalsIgnoreCase("C")) {    //check if row letter is b or c
-            while (true) {
-                System.out.println("Enter your preferred column (1-12): ");
-                if (user_input.hasNextInt()) {
-                    column_number = user_input.nextInt();
-                    if (column_number >= 1 && column_number <= 12) {    // check if the column number is in range (1 to 12)
-                        break;
-                    } else {
-                        System.out.println("Invalid column number. Please enter a number between 1 and 12.");
-                    }
-                } else {
-                    System.out.println("Invalid input. Please enter a number.");
-                    user_input.next(); // Consume the invalid input
-                }
-            }
-        } else {
-            System.out.println("Invalid row letter");    //if it is not equal a,b,c,d; print that
-            return; // Exit the method if the row letter is invalid
-        }
-
-        user_input.nextLine();
-        //input the name, surname and email from the user
-        System.out.print("Enter your first name: ");
-        String f_name = user_input.next();
-        System.out.print("Enter your surname: ");
-        String s_name = user_input.next();
-        System.out.print("Enter your email: ");
-        String email = user_input.next();
-
-        //connect the person class
-        Person person = new Person(f_name, s_name, email);
-
-        // Calculate seat price based on the column number
-        if (column_number <= 5) {
-            seatPrice = 200;
-        } else if (column_number <= 9) {
-            seatPrice = 150;
-        } else {
-            seatPrice = 180;
-        }
-
-        int row_index = row_letter.charAt(0) - 'A';
-        seats[row_index][column_number - 1] = 1;
-
-        //ticket details
-        Ticket ticket = new Ticket(row_letter, column_number, seatPrice, person);
-        sold[sold_count++] = ticket;
-
-        ticket.printTicketInfo();
-
-        ticket.save();     //save the ticket details
-    }
-    //calling cancel_seat
     static void cancel_seat() {
-        Scanner user_input = new Scanner(System.in);
+        int row = read_row();
+        int seat = read_seat(row);
 
-        System.out.println("Enter your row letter (A-D):");
-        String row_letter = user_input.nextLine().toUpperCase(); // Convert to uppercase for case-insensitive comparison
-
-        if (!row_letter.matches("[A-D]")) { // Check for valid row letter (A-D)
-            System.out.println("Invalid row letter. Please enter A, B, C, or D.");
+        if (seats[row][seat] == 0) {
+            System.out.println("Seat " + seat_name(row, seat) + " is not sold, so it cannot be cancelled.");
             return;
         }
 
-        System.out.println("Enter your column number:");
-
-        int column_number;    //initialize variable
-        try {
-            column_number = user_input.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Please enter a number for the column number.");
-            user_input.nextLine(); // Consume remaining newline character
-            return;
-        }
-
-        int seat_index = row_letter.charAt(0) - 'A'; // Convert row letter to index (A=0, B=1, ...)
-
-        // Check if the seat is sold (assuming seats[seat_index][column_number - 1] == 1 indicates sold seat)
-        if (seats[seat_index][column_number - 1] == 1) {
-            seats[seat_index][column_number - 1] = 0; // Mark seat as available
-
-            // Remove the canceled ticket from the sold array
-            boolean ticketFound = false;
-            for (int i = 0; i < sold_count; i++) {
-                Ticket ticket = sold[i];
-                if (ticket.get_row().equals(row_letter) && ticket.get_seat() == column_number) {
-                    // Shift elements to remove the canceled ticket
-                    for (int j = i; j < sold_count - 1; j++) {
-                        sold[j] = sold[j + 1];
-                    }
-                    sold_count--;
-                    ticketFound = true;
-                    break; // Exit loop after finding a match
-                }
-            }
-            //print cancel seat number
-            if (ticketFound) {
-                System.out.println("Ticket for seat " + row_letter + column_number + " has been cancelled.");
-            } else {
-                System.out.println("No ticket found for seat " + row_letter + column_number);
-            }
-        } else {
-            System.out.println("The seat " + row_letter + column_number + " is available.");
-
-        }
+        tickets[row][seat].deleteFile();
+        tickets[row][seat] = null;
+        seats[row][seat] = 0;
+        System.out.println("Ticket for seat " + seat_name(row, seat) + " has been cancelled.");
     }
 
-    // calling find_first_available method
     static void find_first_available() {
-        while(true){
-            String[] row_letter = {"A", "B", "C", "D"};     //row letter
-
-            for (int i = 0; i < row_letter.length; i++) {    // It iterates through the rows and columns of the seats array,
-                String letter = row_letter[i];
-                for (int j = 0; j < seats[i].length; j++) {
-                    if (seats[i][j]==(0)) {
-                        System.out.println("The first available seat is " + letter + (j + 1));     // If an available seat is found, it prints its location (row letter + seat number).
-                        return;
-                    }
+        for (int row = 0; row < seats.length; row++) {
+            for (int seat = 0; seat < seats[row].length; seat++) {
+                if (seats[row][seat] == 0) {
+                    System.out.println("The first available seat is " + seat_name(row, seat));
+                    return;
                 }
-            }System.out.println("Sorry, no seats available to select!");
+            }
         }
+        System.out.println("Sorry, no seats are available.");
     }
-    //calling show_seating_plan method
+
+    // O = available, X = sold
     static void show_seating_plan() {
-
-        System.out.println("Seating Plan:");
-        for (int i = 0; i < seats.length; i++){
-            char row = (char) ('A' + i);
-            System.out.print(row + " ");
-            // Adjust the loop condition for printing seats based on the row
-
-            int seatCount = (i == 1 || i ==2) ? 12 : 14;
-            for (int j = 0; j < seatCount; j++) {
-                if (seats[i][j] == 1) {
-                    System.out.print("X");
-                } else {
-                    System.out.print("O");
-                }
+        System.out.println("Seating plan:");
+        for (int row = 0; row < seats.length; row++) {
+            System.out.print(ROW_LETTERS[row] + " ");
+            for (int seat = 0; seat < seats[row].length; seat++) {
+                System.out.print(seats[row][seat] == 1 ? "X" : "O");
             }
             System.out.println();
-
         }
     }
 
-    //calling print ticket info method
     static void print_tickets_info() {
-        while (true) {
-            int total_sales = 0;
-            System.out.println("Ticket information");
+        int total_sales = 0;
+        int count = 0;
 
-            // Iterate through each sold ticket
-            for (int i = 0; i < sold_count; i++) {
-                Ticket ticket = sold[i];
-
-                System.out.println("Ticket " + (i + 1) + ":");
-                ticket.printTicketInfo(); // Print details of the ticket
-
-                total_sales += ticket.get_price(); // Accumulate total sales
-            }
-
-            // Print total sales
-            System.out.println("Total sales: £" + total_sales);
-            Menu();
-
-        }
-    }
-
-    static void search_tickets() {
-        while (true) {
-            // Prompt the user to enter a row letter (A, B, C, D)
-            System.out.println("Enter row letter (A, B, C, D): ");
-            String row = user_input.next().toUpperCase();
-
-            // Validate the row input
-            if (!row.matches("[ABCD]")) {
-                System.out.println("Invalid row. Please enter A, B, C, or D.");
-                return; // Exit the method
-            }
-
-            // Determine the maximum seat number based on the row
-            int maxSeat = (row.equals("A") || row.equals("D")) ? 14 : 12;
-
-            // Prompt the user to enter the seat number (1-maxSeat)
-            System.out.println("Enter the seat number (1-" + maxSeat + "): ");
-            int seat_no = user_input.nextInt();
-
-            // Validate the seat number input
-            if (seat_no < 1 || seat_no > maxSeat) {
-                System.out.println("Invalid seat number for row " + row);
-                return; // Exit the method
-            }
-
-            // Check if the seat is sold
-            if (seats[row.charAt(0) - 'A'][seat_no - 1] == 1) {
-                // Seat is sold, find the corresponding ticket
-                for (Ticket ticket : sold) {
-                    if (ticket.get_row().equals(row) && ticket.get_seat() == seat_no) {
-                        System.out.println("Ticket information:");
-                        ticket.printTicketInfo();
-                        return; // Exit the method
-                    }
+        for (Ticket[] row_tickets : tickets) {
+            for (Ticket ticket : row_tickets) {
+                if (ticket != null) {
+                    count++;
+                    System.out.println("---- Ticket " + count + " ----");
+                    ticket.printInfo();
+                    total_sales += ticket.getPrice();
                 }
-            } else {
-                System.out.println("This seat is available.");
-                Menu();
+            }
+        }
+
+        if (count == 0) {
+            System.out.println("No tickets have been sold yet.");
+        }
+        System.out.println("Total sales: £" + total_sales);
+    }
+
+    static void search_ticket() {
+        int row = read_row();
+        int seat = read_seat(row);
+
+        Ticket ticket = tickets[row][seat];
+        if (ticket == null) {
+            System.out.println("Seat " + seat_name(row, seat) + " is available.");
+        } else {
+            System.out.println("Seat " + seat_name(row, seat) + " is sold:");
+            ticket.printInfo();
+        }
+    }
+
+    // ---------- Helper methods ----------
+
+    // Seats 1-5 cost £200, seats 6-9 £150, seats 10-14 £180 (seat is the 0-based index)
+    static int get_price(int seat) {
+        if (seat < 5) {
+            return 200;
+        } else if (seat < 9) {
+            return 150;
+        }
+        return 180;
+    }
+
+    static String seat_name(int row, int seat) {
+        return "" + ROW_LETTERS[row] + (seat + 1);
+    }
+
+    // Asks for a row letter until it is valid; returns the row index (A = 0)
+    static int read_row() {
+        while (true) {
+            String input = read_text("Enter the row letter (A, B, C, D): ").toUpperCase();
+            if (input.matches("[A-D]")) {
+                return input.charAt(0) - 'A';
+            }
+            System.out.println("Invalid row letter. Please enter A, B, C or D.");
+        }
+    }
+
+    // Asks for a seat number valid for the given row; returns the seat index (seat 1 = 0)
+    static int read_seat(int row) {
+        int max = seats[row].length;
+        while (true) {
+            int seat = read_int("Enter the seat number (1-" + max + "): ");
+            if (seat >= 1 && seat <= max) {
+                return seat - 1;
+            }
+            System.out.println("Invalid seat number. Row " + ROW_LETTERS[row] + " has seats 1 to " + max + ".");
+        }
+    }
+
+    static String read_email() {
+        while (true) {
+            String email = read_text("Enter your email: ");
+            if (email.matches("[^@\\s]+@[^@\\s]+\\.[^@\\s]+")) {
+                return email;
+            }
+            System.out.println("Invalid email address. Please try again.");
+        }
+    }
+
+    // Reads a whole number, asking again on invalid input
+    static int read_int(String prompt) {
+        while (true) {
+            try {
+                return Integer.parseInt(read_text(prompt));
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
             }
         }
     }
-    static void skip() {
-        System.out.println("Press 1 to go back to the main menu"); //go to the main menu
-        System.out.println("Press 0 to quit the program ");  //quit the program
-        System.out.println("Enter your choice: ");
-        int choice = user_input.nextInt();  //input
 
-        if (choice == 1) {  //if 1; go to menu
-            Menu();
-        } else if (choice == 0) {   //if 0; end the program
-            System.out.println("Goodbye!");
-            System.exit(0);
-        } else {
-            System.out.println("Invalid choice. Exiting the program."); //print invalid
-            System.exit(0);
-
+    // Reads a non-empty line. Reading whole lines avoids leftover input breaking the next question.
+    static String read_text(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            if (!user_input.hasNextLine()) {
+                System.exit(0); // input closed
+            }
+            String line = user_input.nextLine().trim();
+            if (!line.isEmpty()) {
+                return line;
+            }
         }
     }
 }

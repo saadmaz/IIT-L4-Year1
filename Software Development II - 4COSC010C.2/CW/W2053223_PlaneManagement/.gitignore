@@ -27,3 +27,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Ticket files written when seats are bought (e.g. A2.txt) ###
+/[A-D][0-9]*.txt
