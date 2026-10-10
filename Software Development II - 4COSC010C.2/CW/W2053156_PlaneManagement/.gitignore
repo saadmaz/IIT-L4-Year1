@@ -1,0 +1,6 @@
+out/
+.idea/workspace.xml
+*.class
+
+# Ticket files written when seats are bought (e.g. A5.txt)
+/[A-D][0-9]*.txt
