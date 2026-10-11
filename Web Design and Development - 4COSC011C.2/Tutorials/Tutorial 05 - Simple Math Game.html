@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Tutorial 5 </title>
+
+        <style>
+            .correct{
+                color:green;
+                font-weight: bold;
+            }
+            
+            .incorrect{
+                color:red;
+                font-weight: bold;
+            }
+                
+        </style>
+    </head>
+
+<Body>
+
+    <h1> A Simple Math Game </h1>    
+
+<p> <strong> Question 01 </strong>;
+    <span id = "Question1"> </span>
+    <span id = "Answer1"> </span>
+    <span id = "Feedback1"> </span> 
+</p>
+
+<p> <strong> Question 02 </strong>;
+    <span id = "Question2"> </span>
+    <span id = "Answer2"> </span>
+    <span id = "Feedback2"> </span> 
+</p>
+
+<p> <strong> Question 03 </strong>;
+    <span id = "Question3"> </span>
+    <span id = "Answer3"> </span>
+    <span id = "Feedback3"> </span> 
+</p>
+
+<p> <strong> Question 04 </strong>;
+    <span id = "Question4"> </span>
+    <span id = "Answer4"> </span>
+    <span id = "Feedback4"> </span> 
+</p>
+
+<p> <strong> Question 05 </strong>;
+    <span id = "Question5"> </span>
+    <span id = "Answer5"> </span>
+    <span id = "Feedback5"> </span> 
+</p>
+
+<p> <strong> Question 06 </strong>;
+    <span id = "Question6"> </span>
+    <span id = "Answer6"> </span>
+    <span id = "Feedback6"> </span> 
+</p>
+
+<p> <strong> Question 07 </strong>;
+    <span id = "Question7"> </span>
+    <span id = "Answer7"> </span>
+    <span id = "Feedback7"> </span> 
+</p>
+
+<p> <strong> Question 08 </strong>;
+    <span id = "Question8"> </span>
+    <span id = "Answer8"> </span>
+    <span id = "Feedback8"> </span> 
+</p>
+
+<p> <strong> Question 09 </strong>;
+    <span id = "Question9"> </span>
+    <span id = "Answer9"> </span>
+    <span id = "Feedback9"> </span> 
+</p>
+
+<p> <strong> Question 10 </strong>;
+    <span id = "Question10"> </span>
+    <span id = "Answer10"> </span>
+    <span id = "Feedback10"> </span> 
+</p>
+
+<script>
+    const questions = [
+        {question: "What is 5 + 7?", answer: "12"},
+        {question: "What is 25 - 6?", answer: "19"},
+        {question: "What is 9 / 3?", answer: "3"},
+        {question: "What is 8 * 3?", answer: "24"},
+        {question: "What is 6 + 8?", answer: "14"},
+        {question: "What is 8 * 8?", answer: "64"},
+        {question: "What is 9 - 1?", answer: "8"},
+        {question: "What is 6 + 9?", answer: "15"},
+        {question: "What is 7 * 5?", answer: "35"},
+        {question: "What is 10 * 6?", answer: "60"},
+    ];
+    let userAnswer=[];
+
+    let feedback=[];
+    for (let index = 0; index< questions.length; index++){
+        let answer = prompt(questions[index].question);
+        userAnswer.push(answer);
+        document.getElementById(question (index+1) ).innerHTML = "What is 5 + 7?";
+        if(userAnswer[index]==questions[index].answer){
+            let feedback="correct";
+        }else{
+                feedback.push("incorrect");
+        }
+    }
+
+    
+
+      
+</script>
+
+</Body>
