@@ -1,4 +1,4 @@
-# Plane Management — Saad Mazhar (20221804 / w20532233)
+# Plane Management: Saad Mazhar (20221804 / w20532233)
 
 Software Development II (4COSC010C.2) coursework, 2023/24: a console app for selling seats on a
 small plane. Rows A and D have 14 seats; rows B and C have 12.
@@ -26,4 +26,4 @@ java -cp out W2053223_PlaneManagement
 
 Or open the folder in IntelliJ IDEA and run `W2053223_PlaneManagement`.
 
-Prices: seats 1–5 £200, seats 6–9 £150, seats 10–14 £180.
+Prices: seats 1 to 5 £200, seats 6 to 9 £150, seats 10 to 14 £180.

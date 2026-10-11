@@ -1,4 +1,4 @@
-# Cinema Management (The London Lumiere) — Saad Mazhar (20221804 / w20532233)
+# Cinema Management (The London Lumiere): Saad Mazhar (20221804 / w20532233)
 
 Software Development II (4COSC010C.2) coursework: a console app for selling seats at
 The London Lumiere cinema. It has 3 rows of 16 seats, with an aisle between seats 8 and 9.
