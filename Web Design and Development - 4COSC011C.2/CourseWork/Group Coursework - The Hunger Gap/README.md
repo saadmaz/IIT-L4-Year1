@@ -13,7 +13,7 @@ theme **Zero Hunger**, built in plain HTML, CSS and JavaScript.
 ## 📂 Structure
 
 ```
-CW/
+Group Coursework - The Hunger Gap/
 ├── Group Site - The Hunger Gap/               Combined site (Aathif's submission)
 │   ├── homepage.html, feedback.html           Student 2's pages
 │   ├── Gallery2.html, SiteMap.html,
