@@ -44,3 +44,15 @@ self-contained, and its images are in that folder's `Images/`.
 Some navigation links point to pages that live in another student's folder or were never
 built (`shop.html`, `quiz.html`, `Student_Details.html`), so those links don't open
 anything from inside a single folder.
+
+## 🎨 Colour palette
+
+The site's colours, matching the logo (`hunger-logo.png`):
+
+| Swatch | Hex |
+|---|---|
+| Dark blue | `#0c4e8b` |
+| Blue | `#0c80e3` |
+| Cyan | `#12c3d6` |
+| Mint green | `#4fe6af` |
+| Pale green | `#ccf2cd` |

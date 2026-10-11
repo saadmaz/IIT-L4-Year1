@@ -39,6 +39,10 @@ It includes foundational learning materials, practical exercises, coursework, an
 - Responsive web design principles
 - UI/UX basics
 
+### 🔹 Other Modules
+- Revision material from modules outside this Level 4 programme, kept for reference
+  (a Java OOP in-class test and a Business Computing portfolio task)
+
 ---
 
 ## 🗂 Repository Structure

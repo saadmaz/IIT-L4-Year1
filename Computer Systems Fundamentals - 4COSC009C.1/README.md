@@ -10,12 +10,19 @@ It follows a week-by-week structure aligned with the academic syllabus, making i
 ```
 
 Computer-Systems-Fundamentals/
+├── ICT/
+│   ├── CSF Mock.pdf
+│   └── CSF ICT 2 - Practice Questions and Answers (Dec 2023).pdf
+│
+├── Notes/
+│   └── CSF Short Notes - IP Addressing, FAT Boot Sector, Logic Gates.pdf
+│
 ├── Week 01/
 │   ├── CSF_Lecture_1_Part_1_of_2.pptx
-│   ├── CSF_Lecture_1_Part_2_of_2.pptx
-│   └── CSF_Lecture_2_Part_1_of_2.pptx
+│   └── CSF_Lecture_1_Part_2_of_2.pptx
 │
 ├── Week 02/
+│   ├── CSF_Lecture_2_Part_1_of_2.pptx
 │   ├── Binary Operations.pdf
 │   ├── Hexadecimal Multiplication Tables.pdf
 │   ├── Range of Values (Unsigned).pdf
