@@ -1,0 +1,8 @@
+# Build output
+out/
+target/
+*.class
+
+# IDE / OS
+.idea/workspace.xml
+.DS_Store
