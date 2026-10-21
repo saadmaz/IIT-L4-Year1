@@ -1,0 +1,11 @@
+<!DOCTYPE employeelist
+[
+<!ELEMENT employeelist (employee+)>
+<!ELEMENT employee(name,address,mobile*)>
+<!ELEMENT name(firstName, secondName?)>
+<!ELEMENT firstName (#PCADATA)>
+<!ELEMENT secondName(#PCADATA)>
+<!ELEMENT address (#PCADATA)>
+<!ELEMENT mobile (#PCADATA)>
+
+]>

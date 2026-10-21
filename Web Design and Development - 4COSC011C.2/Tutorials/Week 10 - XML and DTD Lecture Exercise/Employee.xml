@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE employeelist SYSTEM "Employee.dtd">-->
+<!DOCTYPE employeelist
+[
+<!ELEMENT employeelist (employee+)>
+<!ELEMENT employee (name,address,mobile*)>
+<!ELEMENT name (firstName,secondName?)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT secondName (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT mobile (#PCDATA)>
+
+]>
+
+
+<employeelist>
+<employee>
+<name>
+<firstName>
+Peter
+</firstName>
+<secondName>
+Ann
+</secondName>
+</name>
+<address>
+UK street
+</address>
+<mobile>
+98766
+</mobile>
+</employee>
+<employee>
+
+<name>
+<firstName>
+John
+</firstName>
+</name>
+<address>
+UK street
+</address>
+</employee>
+</employeelist>
+
